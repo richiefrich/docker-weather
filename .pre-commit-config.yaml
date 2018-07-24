@@ -1,0 +1,21 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v1.4.0
+    hooks:
+    -   id: trailing-whitespace
+    -   id: end-of-file-fixer
+    -   id: check-docstring-first
+    -   id: check-json
+    -   id: check-yaml
+    -   id: requirements-txt-fixer
+-   repo: https://github.com/pre-commit/pre-commit
+    rev: v1.10.4
+    hooks:
+    -   id: validate_manifest
+-   repo: https://github.com/asottile/add-trailing-comma
+    rev: v0.6.4
+    hooks:
+    -   id: add-trailing-comma
+-   repo: meta
+    hooks:
+    -   id: check-useless-excludes

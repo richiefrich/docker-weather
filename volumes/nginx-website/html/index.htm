@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <title>Here is the weather.</title>
+</head>
+<style>
+body {
+  text-align: center;
+  background: #42275a;
+  background: -webkit-linear-gradient(to right, #734b6d, #42275a);
+  background: linear-gradient(to right, #734b6d, #42275a);
+  font-family: helvetica, sans-serif;
+
+}
+  h1 {
+    font-size: 72px;
+    padding-top: 24px;
+    color: rgba(255,255,255,0.72);
+  }
+  h2 {
+    font-size: 24px;
+    padding-bottom: 24px;
+    color: rgba(255,255,255,0.72);
+  }
+  #weather {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+</style>
+
+<body>
+  <h1>
+    Here is the weather.
+  </h1>
+  <h2>
+    Which city or zip do you want to see the weather for?
+  </h2>
+  <div   id="weather"
+>
+  <iframe
+  width="100%"
+  height="600px"
+  src="http://www.weather.com"
+  ></iframe>
+</div>
+</body>
+</html>
