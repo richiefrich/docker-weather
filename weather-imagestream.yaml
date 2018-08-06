@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ImageStream
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: weather
+  name: weather
+spec:
+  tags:
+  - annotations: null
+    from:
+      kind: DockerImage
+      name: weather-nginx:v3
+    generation: null
+    importPolicy: {}
+    name: v3
+status:
+  dockerImageRepository: ""

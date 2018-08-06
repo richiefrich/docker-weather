@@ -1,19 +1,14 @@
 ---
 
-version: '2.1'
+version: "3"
 
 services:
   weather:
     build:
-      args:
-      - buildno=1
       context: .
       dockerfile: Dockerfile
     container_name: weather
     domainname: local
-    expose:
-    - 80/tcp
-    - 443/tcp
     healthcheck:
       interval: 5m
       retries: 5
@@ -22,10 +17,9 @@ services:
       - /usr/local/bin/docker-nginx-healthcheck
       timeout: 1m
     hostname: weather
-    image: weather-nginx:v2
+    image: weather-nginx:v3
     ports:
-    - 80:80/tcp
-    - 443:443/tcp
+    - "80"
     restart: always
     volumes:
     - ./volumes/nginx-website/conf.d:/etc/nginx/conf.d:rw

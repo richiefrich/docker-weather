@@ -1,0 +1,53 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose --provider Kubernetes --verbose convert --verbose --emptyvols
+      -d
+    kompose.version: 1.12.0 (0ab07be)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: weather
+  name: weather
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: weather
+    spec:
+      containers:
+      - image: weather-nginx:v3
+        livenessProbe:
+          exec:
+            command:
+            - /usr/local/bin/docker-nginx-healthcheck
+          failureThreshold: 5
+          periodSeconds: 300
+          timeoutSeconds: 60
+        name: weather
+        ports:
+        - containerPort: 80
+        resources: {}
+        volumeMounts:
+        - mountPath: /etc/nginx/conf.d
+          name: weather-empty0
+        - mountPath: /usr/share/nginx/html
+          name: weather-empty1
+        - mountPath: /etc/nginx/nginx.conf
+          name: weather-empty2
+          readOnly: true
+      hostname: weather
+      restartPolicy: Always
+      subdomain: local
+      volumes:
+      - emptyDir: {}
+        name: weather-empty0
+      - emptyDir: {}
+        name: weather-empty1
+      - emptyDir: {}
+        name: weather-empty2
+status: {}
